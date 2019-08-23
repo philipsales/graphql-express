@@ -1,0 +1,10 @@
+
+module.exports = {
+    Query: {
+      hello: () => 'resolved',
+      launch: (_, { id }, { dataSources }) =>
+        dataSources.launchAPI.getLaunchById({ launchId: id }),
+      messages: (_, { id }, { dataSources }) =>
+        dataSources.messageAPI.getAllMessages()
+    }
+}

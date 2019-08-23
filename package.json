@@ -1,23 +1,38 @@
 {
-  "name": "graphql-express-couchbase",
+  "name": "graphql-apollo",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "description": "Graphql Apollo boiler-plate",
+  "main": "apollo.config.js",
   "scripts": {
-    "start": "node server.js",
-    "server": "nodemon server.js"
+    "build": "tsc",
+    "serve": "npm run build && nodemon lib/index.js",
+    "start": "node lib/index.js",
+    "deploy": "npm run build && gcloud app deploy"
   },
-  "author": "Philip Sales",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/philipsales/graphql-express.git"
+  },
+  "keywords": [
+    "graphql",
+    "apollo"
+  ],
+  "author": "philip sales",
   "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/philipsales/graphql-express/issues"
+  },
+  "homepage": "https://github.com/philipsales/graphql-express#readme",
   "devDependencies": {
-    "nodemon": "^1.19.1"
+    "tslint": "^5.19.0",
+    "typescript": "^3.5.3"
   },
   "dependencies": {
-    "@types/graphql": "^14.2.3",
-    "@types/node": "^12.7.2",
-    "axios": "^0.19.0",
-    "express": "^4.17.1",
-    "express-graphql": "^0.9.0",
-    "graphql": "^14.4.2"
+    "apollo-datasource-rest": "^0.6.1",
+    "apollo-server": "^2.8.2",
+    "graphql": "^14.5.0",
+    "graphql-tag": "^2.10.1",
+    "graphql-tool": "^1.0.0",
+    "node-fetch": "^2.6.0"
   }
 }
