@@ -1,3 +1,5 @@
+'use strict';
+
 const { ApolloServer, gql } = require('apollo-server');
 
 const typeDefs = require('./schema'); 
@@ -10,7 +12,6 @@ const dataSources = () => ({
   messageAPI: new MessageAPI()
 });
 
-
 const server = new ApolloServer({ 
     typeDefs, 
     dataSources,
@@ -22,11 +23,6 @@ const server = new ApolloServer({
     },
 });
 
-/*
-server.listen().then(({ url }) => {
-    console.log(`🚀  Server ready at ${url}`);
-  });
-*/
 if (process.env.NODE_ENV !== 'test'){
   server.listen({ port: 4001 }).then(({ url }) => {
     console.log(`🚀 app running at ${url}`);
