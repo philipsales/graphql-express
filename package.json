@@ -5,9 +5,9 @@
   "main": "apollo.config.js",
   "scripts": {
     "build": "tsc",
-    "serve": "npm run build && nodemon lib/index.js",
-    "start": "node lib/index.js",
-    "deploy": "npm run build && gcloud app deploy"
+    "serve": "npm run build && nodemon src/index.js",
+    "start": "node src/index.js",
+    "deploy": "npm run build"
   },
   "repository": {
     "type": "git",
@@ -30,6 +30,7 @@
   "dependencies": {
     "apollo-datasource-rest": "^0.6.1",
     "apollo-server": "^2.8.2",
+    "couchbase": "^2.5.1",
     "graphql": "^14.5.0",
     "graphql-tag": "^2.10.1",
     "graphql-tool": "^1.0.0",

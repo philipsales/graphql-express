@@ -1,19 +1,41 @@
 'use strict';
-
-const { ApolloServer, gql } = require('apollo-server');
+//const { makeExecutableSchema, addMockFunctionsToSchema } = require('graphql-tools');
+const { ApolloServer, 
+  addSchemaLevelResolveFunction,
+  makeExecutableSchema } = require('apollo-server');
 
 const typeDefs = require('./schema'); 
 const resolvers = require('./resolver');
 const LaunchAPI = require('./datasource/launch');
 const MessageAPI = require('./datasource/message');
+const ResidentAPI = require('./datasource/resident');
 
 const dataSources = () => ({
   launchAPI: new LaunchAPI(),
-  messageAPI: new MessageAPI()
+  messageAPI: new MessageAPI(),
+  residentAPI: new ResidentAPI()
 });
+
+const logger = { log: e => console.log(e) }
+
+//const schema = makeExecutableSchema({ typeDefs });
+/*
+const schema = makeExecutableSchema({
+  typeDefs,
+  resolvers,
+  logger
+});
+*/
+
+const rootResolveFunction = (parent, args, context, info) => {
+  //perform action before any other resolvers
+};
+
+// addSchemaLevelResolveFunction(schema, rootResolveFunction)
 
 const server = new ApolloServer({ 
     typeDefs, 
+    //schema,
     dataSources,
     resolvers,
     tracing: true,
@@ -33,8 +55,7 @@ module.exports = {
   dataSources,
   typeDefs,
   resolvers,
-  ApolloServer,
   LaunchAPI,
   MessageAPI,
-  server
+  ResidentAPI 
 }
