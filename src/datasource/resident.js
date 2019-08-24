@@ -59,6 +59,29 @@ class ResidentAPI {
     return Array.isArray(result)
       ? result.map(resident => this.residentReducer(resident)) : [];
   }
+
+  async getResident() {
+    console.log(id);
+    let statement = "SELECT awhpiidb.answers.*  FROM awhpiidb limit 5";
+    let query = couchbase.N1qlQuery.fromString(statement);
+
+    let promise = new Promise((resolve,reject) => {
+
+      this.bucket.query(query, (error, response) => {
+        if(error){
+          console.log(error);
+          reject(error)
+        } 
+        else {
+          return resolve(response);
+        }
+      })
+    }); 
+
+    let result = await promise; 
+    return Array.isArray(result)
+      ? result.map(resident => this.residentReducer(resident)) : [];
+  }
 }
 
 module.exports = ResidentAPI;

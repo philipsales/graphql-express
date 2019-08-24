@@ -21,13 +21,6 @@ class MessageAPI extends RESTDataSource {
   async getAllMessages() {
     const response = await this.get('');
 
-    // transform the raw messagees to a more friendly
-    console.log('message', response[0]);
-
-    const tst = response.map(message => this.messageReducer(message)); 
-    console.log('test', tst);
-    console.log('typeof', typeof(tst));
-
     return Array.isArray(response)
       ? response.map(message => this.messageReducer(message)) : [];
   }

@@ -6,6 +6,7 @@ const typeDefs = gql`
     hello: String 
     launch(id: ID!): Launch
     residents: [Resident] 
+    resident(id: ID): Resident 
     messages: [Message] 
   }
 
@@ -46,7 +47,7 @@ const typeDefs = gql`
     countryCode: String
     countryName: String
     emailAddress: String
-    id: String
+    id: ID! 
     lastNameSuffix: String
     poorCardHas: String
     poorCardNumber: String
@@ -54,6 +55,15 @@ const typeDefs = gql`
     postalCode: String
     provinceCity: String
   }
+
+  type contactDetails {
+    emailAddress: String
+    countryCode: String
+    cellphoneNumber: String
+  }
+
+
+
 
   
 `;
