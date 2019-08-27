@@ -2,7 +2,6 @@
 
 const file = require('../logger/util/filename');
 const logPath = process.env.LOG_PATH;
-//const logPath = '../logs/';
 
 const { createLogger, format, transports } = require('winston');
 const { combine, timestamp, label, prettyPrint } = format;
@@ -44,14 +43,5 @@ const logger = createLogger({
       })
     ]
   });
-
-  
-  logger.add(new transports.Console({
-      label: 'module A',
-      format: format.combine(
-        format.colorize(),
-        format.simple()
-      )
-  }));
   
   module.exports = { logger, file }
