@@ -29,7 +29,7 @@
   },
   "dependencies": {
     "apollo-datasource-rest": "^0.6.1",
-    "apollo-server": "^2.8.2",
+    "apollo-server": "^2.25.3",
     "couchbase": "^2.5.1",
     "graphql": "^14.5.0",
     "graphql-tag": "^2.10.1",
